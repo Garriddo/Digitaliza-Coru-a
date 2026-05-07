@@ -26,11 +26,13 @@ import { AuthProvider } from '@/contexts/AuthContext.jsx';
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51TLMSq848C4rUNZMIlNu935xBND5ifRszf2KbEOZqOZtylsqr699ZMxMJFUsOP9Yly8mRiL5tg3TsaGoYKFkxd4n0047kzFzWa');
 
 function App() {
+  const basename = import.meta.env.BASE_URL === '/' ? '/' : import.meta.env.BASE_URL.replace(/\/$/, '');
+
   return (
     <Elements stripe={stripePromise}>
       <AuthProvider>
         <CartProvider>
-          <Router>
+          <Router basename={basename}>
             <ScrollToTop />
             <Routes>
               {/* Public Routes */}
