@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# PocketBase runtime data and binaries
+apps/pocketbase/pb_data/
+apps/pocketbase/pocketbase
+
+# Local logs and generated checks
+*.log
+screenshots/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

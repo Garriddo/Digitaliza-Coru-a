@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Digitaliza Coruña Brand System */
+    --background: 211 78% 10%;
+    --foreground: 0 0% 100%; /* Light/White */
+    
+    --primary: 24 100% 50%; /* #FF6B00 Orange */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 215 16% 47%; /* #64748B Gray */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    --card: 211 54% 14%;
+    --card-foreground: 0 0% 100%;
+    
+    --muted: 211 42% 18%;
+    --muted-foreground: 215 16% 75%;
+    
+    --border: 211 32% 24%;
+    --input: 211 42% 15%;
+    --ring: 24 100% 50%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --popover: 210 50% 16%;
+    --popover-foreground: 0 0% 100%;
+    
+    --radius: 0.75rem;
+
+    /* Dashboard Status Colors */
+    --status-pending: 38 92% 50%; /* Orange/Amber */
+    --status-dev: 217 91% 60%; /* Blue */
+    --status-review: 280 80% 60%; /* Purple */
+    --status-active: 142 71% 45%; /* Green */
+  }
+  
+  .dark {
+    /* Identical to :root since the brand defaults to a dark theme */
+    --background: 211 78% 10%;
+    --foreground: 0 0% 100%;
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 16% 47%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --card: 211 54% 14%;
+    --card-foreground: 0 0% 100%;
+    --muted: 211 42% 18%;
+    --muted-foreground: 215 16% 75%;
+    --border: 211 32% 24%;
+    --input: 211 42% 15%;
+    --ring: 24 100% 50%;
+    --popover: 210 50% 16%;
+    --popover-foreground: 0 0% 100%;
+
+    --status-pending: 38 92% 50%;
+    --status-dev: 217 91% 60%;
+    --status-review: 280 80% 60%;
+    --status-active: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    min-width: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  img,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  p {
+    max-width: 65ch;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Form & Auth Utilities */
+  .auth-container {
+    @apply min-h-[calc(100vh-80px)] flex items-center justify-center p-4 bg-background relative overflow-hidden;
+  }
+  
+  .auth-card {
+    @apply w-full max-w-md bg-card rounded-2xl shadow-2xl border border-border p-8 relative z-10;
+  }
+  
+  .form-input-field {
+    @apply flex h-12 w-full rounded-md border border-border bg-input px-3 py-2 text-sm text-white ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors;
+  }
+
+  .form-label {
+    @apply text-sm font-semibold text-foreground mb-2 block;
+  }
+
+  .form-error {
+    @apply text-sm text-destructive mt-1 font-medium;
+  }
+
+  /* Dashboard Elevate Card */
+  .card-elevated {
+    @apply bg-card border border-border rounded-2xl shadow-lg transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-status-pending {
+    color: hsl(var(--status-pending));
+  }
+  .bg-status-pending {
+    background-color: hsl(var(--status-pending));
+  }
+  .border-status-pending {
+    border-color: hsl(var(--status-pending));
+  }
+
+  .text-status-dev {
+    color: hsl(var(--status-dev));
+  }
+  .bg-status-dev {
+    background-color: hsl(var(--status-dev));
+  }
+  .border-status-dev {
+    border-color: hsl(var(--status-dev));
+  }
+
+  .text-status-review {
+    color: hsl(var(--status-review));
+  }
+  .bg-status-review {
+    background-color: hsl(var(--status-review));
+  }
+  .border-status-review {
+    border-color: hsl(var(--status-review));
+  }
+
+  .text-status-active {
+    color: hsl(var(--status-active));
+  }
+  .bg-status-active {
+    background-color: hsl(var(--status-active));
+  }
+  .border-status-active {
+    border-color: hsl(var(--status-active));
+  }
+}
